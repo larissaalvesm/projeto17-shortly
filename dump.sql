@@ -145,12 +145,15 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 --
 
 INSERT INTO public.sessions VALUES (1, 5, '771831c9-becf-42e8-b645-79e040bdc9f9', '2023-05-19 15:51:30.499096');
+INSERT INTO public.sessions VALUES (2, 5, '6adb49e1-867f-407c-963c-51f7fcad416a', '2023-05-19 22:53:12.165864');
 
 
 --
 -- Data for Name: urls; Type: TABLE DATA; Schema: public; Owner: -
 --
 
+INSERT INTO public.urls VALUES (1, 5, 'z10H63L-', 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-f228e76e995d48a48cc84e4e5476cb71', 0, '2023-05-19 23:00:32.281928');
+INSERT INTO public.urls VALUES (2, 5, '5FVvj0pt', 'https://www.notion.so/bootcampra/Projeto-17-Shortly-API-f228e76e995d48a48cc84e4e5476cb71', 0, '2023-05-19 23:00:45.83428');
 
 
 --
@@ -167,14 +170,14 @@ INSERT INTO public.users VALUES (5, 'teste', 'teste@driven.com', '$2b$10$VEbKyvj
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 1, true);
+SELECT pg_catalog.setval('public.sessions_id_seq', 2, true);
 
 
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 1, false);
+SELECT pg_catalog.setval('public.urls_id_seq', 2, true);
 
 
 --

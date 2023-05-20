@@ -25,3 +25,24 @@ export async function shortenUrl(req, res) {
         res.status(500).send(err.message);
     }
 }
+
+export async function getUrlById(req, res) {
+
+    const { id } = req.params;
+
+    try {
+        const urlExist = await db.query(`SELECT * FROM urls WHERE id=$1`, [id]);
+        if (urlExist.rowCount === 0) return res.sendStatus(404);
+
+        const body = {
+            "id": urlExist.rows[0].id,
+            "shortUrl": urlExist.rows[0].shortUrl,
+            "url": urlExist.rows[0].url
+        }
+
+        res.send(body);
+    }
+    catch (err) {
+        res.status(500).send(err.message);
+    }
+}

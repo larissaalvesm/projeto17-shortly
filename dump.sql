@@ -144,7 +144,6 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 -- Data for Name: sessions; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.sessions VALUES (1, 5, '771831c9-becf-42e8-b645-79e040bdc9f9', '2023-05-19 15:51:30.499096');
 
 
 --
@@ -157,31 +156,27 @@ INSERT INTO public.sessions VALUES (1, 5, '771831c9-becf-42e8-b645-79e040bdc9f9'
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO public.users VALUES (1, 'larissa', 'larissa@email.com', '1234', '2023-05-19 14:51:03.125932');
-INSERT INTO public.users VALUES (2, 'João', 'joao@driven.com.br', 'driven', '2023-05-19 15:06:46.690575');
-INSERT INTO public.users VALUES (3, 'João2', 'joao2@driven.com.br', 'driven', '2023-05-19 15:08:39.823885');
-INSERT INTO public.users VALUES (5, 'teste', 'teste@driven.com', '$2b$10$VEbKyvjZVj0wjcjyJ73IXeaxbhsjWJ1t9MbkP.VTmCTtsyESH/ZfS', '2023-05-19 15:48:14.578379');
 
 
 --
 -- Name: sessions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.sessions_id_seq', 2, true);
+SELECT pg_catalog.setval('public.sessions_id_seq', 4, true);
 
 
 --
 -- Name: urls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.urls_id_seq', 2, true);
+SELECT pg_catalog.setval('public.urls_id_seq', 10, true);
 
 
 --
 -- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public.users_id_seq', 5, true);
+SELECT pg_catalog.setval('public.users_id_seq', 7, true);
 
 
 --

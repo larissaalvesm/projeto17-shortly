@@ -82,3 +82,24 @@ export async function getUrlsByUser(req, res) {
     }
 }
 
+export async function ranking(req, res) {
+    try {
+
+        const data = await db.query(`
+        SELECT users.id, users.name, COUNT(urls.id) as "linksCount", SUM(urls."visitCount") as "visitCount"
+        FROM users
+        JOIN urls ON users.id = urls."userId"
+        GROUP BY users.id
+        ORDER BY "visitCount" DESC
+        LIMIT 10;
+        `)
+
+        const body = data.rows;
+
+        res.status(200).send(body);
+
+    }
+    catch (err) {
+        res.status(500).send(err.message);
+    }
+}

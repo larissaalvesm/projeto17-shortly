@@ -39,3 +39,46 @@ export async function signIn(req, res) {
     }
 }
 
+export async function getUrlsByUser(req, res) {
+    try {
+        const session = res.locals.session;
+        const userId = session.rows[0].userId;
+
+        const data = await db.query(`
+        SELECT users.id as "userId", users.name, urls.id as "urlId", urls."shortUrl", urls.url, urls."visitCount"
+        FROM users
+        JOIN urls ON users.id = urls."userId"
+        WHERE users.id=$1
+        `, [userId]);
+
+        const id = data.rows[0].userId;
+        const name = data.rows[0].name;
+        let totalVisitCount = 0;
+        const shortenedUrls = [];
+
+        data.rows.map(row => totalVisitCount = totalVisitCount + row.visitCount);
+
+        data.rows.map(row => {
+            const obj = {
+                "id": row.urlId,
+                "shortUrl": row.shortUrl,
+                "url": row.url,
+                "visitCount": row.visitCount
+            };
+            shortenedUrls.push(obj);
+        });
+
+        const obj = {
+            "id": id,
+            "name": name,
+            "visitCount": totalVisitCount,
+            "shortenedUrls": shortenedUrls
+        }
+
+        res.status(200).send(obj);
+    }
+    catch (err) {
+        res.status(500).send(err.message);
+    }
+}
+
